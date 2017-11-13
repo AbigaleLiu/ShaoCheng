@@ -7,7 +7,7 @@ class Desired_caps:
     """
     自动获取启动appium所需的desired_caps
     """
-    def desired_caps(self):
+    def desired_caps(self, apk_name):
         try:
             version_Popen = subprocess.Popen("adb shell getprop ro.build.version.release",
                                              stdout=subprocess.PIPE,
@@ -20,8 +20,8 @@ class Desired_caps:
                 device_name = subprocess.Popen("adb shell getprop ro.serialno",
                                                stdout=subprocess.PIPE).communicate()[0].decode().split("\r\n")[0]
                 localpath = os.getcwd()
-                # app = localpath.split("Mobile")[0] + "apk\\" + apk_name
-                app = TransportFile().hit_me()
+                app = localpath.split("Mobile")[0] + "apk\\" + apk_name
+                # app = TransportFile().hit_me()
                 package_name = subprocess.Popen("aapt dump badging "+app,
                                                 stdout=subprocess.PIPE).communicate()[0].decode().split("'")[1]
                 desired_caps = {
