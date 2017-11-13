@@ -49,4 +49,4 @@ button_var.set("选择")  # 按钮初始文字
 button = tkinter.Button(textvariable=button_var, command=hit_me, width=7)  # 创建按钮
 button.place(x=325, y=75, anchor='nw')  # 按钮放置坐标，以西北角为准
 
-window.mainloop()
+# window.mainloop()

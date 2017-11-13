@@ -1,13 +1,14 @@
 import os
 import subprocess
 from Scripts.GUI.TransportFile import *
+from Scripts.Public.Path import *
 
 
 class Desired_caps:
     """
     自动获取启动appium所需的desired_caps
     """
-    def desired_caps(self, apk_name):
+    def desired_caps(self):
         try:
             version_Popen = subprocess.Popen("adb shell getprop ro.build.version.release",
                                              stdout=subprocess.PIPE,
@@ -19,9 +20,7 @@ class Desired_caps:
                 platform_version = version_adb[0].decode().split("\r\n")[0]
                 device_name = subprocess.Popen("adb shell getprop ro.serialno",
                                                stdout=subprocess.PIPE).communicate()[0].decode().split("\r\n")[0]
-                localpath = os.getcwd()
-                app = localpath.split("Mobile")[0] + "apk\\" + apk_name
-                # app = TransportFile().hit_me()
+                app = Path().apk_path()
                 package_name = subprocess.Popen("aapt dump badging "+app,
                                                 stdout=subprocess.PIPE).communicate()[0].decode().split("'")[1]
                 desired_caps = {
@@ -38,4 +37,4 @@ class Desired_caps:
 
 if __name__ == '__main__':
     _r = Desired_caps()
-    print(_r.desired_caps("shaocheng-lianxiang-v1.0-t2017-11-08.apk"))
+    print(_r.desired_caps())

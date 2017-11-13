@@ -6,13 +6,14 @@ from reportlab.pdfbase.ttfonts import TTFont
 pdfmetrics.registerFont(TTFont('SimSun', 'SimSun.ttf'))  # 注册字体（宋体）
 from reportlab.lib import fonts, colors
 fonts.addMapping('SimSun', 0, 0, 'SimSun')
-# fonts.addMapping('SimSun', 0, 1, 'SimSun')
 from reportlab.lib.enums import TA_CENTER, TA_LEFT
+
+from Scripts.Public.TimeTemp import *
 
 
 class PDF:
     def report_name(self):
-        current_time = datetime.datetime.now().strftime("%Y-%m-%d _%H_%M_%S")
+        current_time = TimeTemp().time_temp()
         report_name = current_time + ".pdf"
         return report_name
 
