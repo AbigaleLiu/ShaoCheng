@@ -24,9 +24,9 @@ class Path:
         log_path = localpath.split("\\Scripts")[0] + "\\Scripts\\Report\\Logs\\" + TimeTemp().time_temp()
         return log_path
 
-    def report_path(self):
+    def report_dir(self):
         localpath = os.getcwd()
-        report = localpath.split("\\Scripts")[0] + "\\Report\\" + TimeTemp().time_temp()
+        report = localpath.split("\\Scripts")[0] + "\\Scripts\\Report"
         return report
 
 if __name__ == '__main__':
