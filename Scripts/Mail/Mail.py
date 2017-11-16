@@ -17,7 +17,7 @@ class Mail:
         # 126邮箱
         # sender = "abigaleliu@126.com"  # 发件人邮箱
         # smtpserver = "smtp.126.com"  # 发件服务器
-        # password = "miao2333"  # 发件人SMTP密码（126）
+        # password = "*****"  # 发件人SMTP密码（126）
 
         # 阿里云邮箱
         sender = "liuxue@nutown.cn"  # 发件人阿里云邮箱
@@ -27,7 +27,7 @@ class Mail:
         # QQ邮箱
         # sender = "abigale_liu@qq.com"  # 发件人邮箱
         # smtpserver = "smtp.qq.com"  # 发件服务器
-        # password = "bknznoizcpnnddff"  # 发件人SMTP密码（qq）
+        # password = "******"  # 发件人SMTP密码（qq）
 
         port = 25  # 发件端口:25为非SSL,465/587为SSL
 
