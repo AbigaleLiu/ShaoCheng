@@ -14,25 +14,27 @@ class Desired_caps:
                                              stdout=subprocess.PIPE,
                                              stderr=subprocess.PIPE)
             version_adb = version_Popen.communicate()
-            if version_Popen.stderr == b'':
-                return version_adb[1].decode().split("\r\n")[0]
-            else:
-                platform_version = version_adb[0].decode().split("\r\n")[0]
+            if version_adb[1] == b'':
+                platform_version = version_adb[0].decode().split("\r\r")[0]
                 device_name = subprocess.Popen("adb shell getprop ro.serialno",
-                                               stdout=subprocess.PIPE).communicate()[0].decode().split("\r\n")[0]
+                                               stdout=subprocess.PIPE).communicate()[0].decode().split("\r\r")[0]
                 app = Path().apk_path()
-                package_name = subprocess.Popen("aapt dump badging "+app,
-                                                stdout=subprocess.PIPE).communicate()[0].decode().split("'")[1]
+                badging = subprocess.Popen("aapt dump badging " + app,
+                                                stdout=subprocess.PIPE).communicate()[0].decode()
+                package_name = badging.split("'")[1]
+                app_activity = badging.split("launchable-activity: name=")[1].split("\'")[1]
                 desired_caps = {
-                        'platformName': 'Android',
-                        'platformVersion': platform_version,
-                        'deviceName': device_name,
-                        'app': app,
-                        'app-package': package_name,
-                    }
+                    'platformName': 'Android',
+                    'platformVersion': platform_version,
+                    'deviceName': device_name,
+                    'appPackage': package_name,
+                    'appActivity': app_activity
+                }
                 return desired_caps
+            else:
+                print(version_adb[1].decode().split("\r\n")[0])
         except Exception as e:
-            return e
+            print(e)
 
 
 if __name__ == '__main__':

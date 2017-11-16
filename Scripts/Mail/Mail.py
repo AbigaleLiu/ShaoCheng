@@ -9,7 +9,7 @@ from Scripts.Mail.Attachment import *
 
 class Mail:
     def mail(self):
-        report_path = Attachment().last_pdf()  # 邮件绝对路径
+        report_path = Attachment().last_file()  # 邮件绝对路径
         report_name = Attachment().report_name()  # 附件名
 
         sender = "abigaleliu@126.com"  # 发件人邮箱

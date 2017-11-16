@@ -64,7 +64,7 @@ class PDF:
         # for i in [count0, pass_p, count1, fail_p, count2]:
         #     story.append(i)
 
-        count = Paragraph("共执行用例<var>all_num</var>个，通过<font color=#00ff00><var>pass_num</var></font>个，失败<font color=#ff0000><var>fail_num</var></font>个",
+        count = Paragraph("<p>共执行用例%(all_num)s个，通过<font color=#00ff00>%(pass_num)s</font>个，失败<font color=#ff0000>%(fail_num)s</font></p>个",
                           style_sheet["Normal_zh"])
         story.append(count)
 
